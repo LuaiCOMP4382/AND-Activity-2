@@ -16,12 +16,12 @@ public class ThirdActivity extends AppCompatActivity {
         setContentView(R.layout.activity_third);
 
 
-        // TODO (21): Use getCharExtra on the intent to get the INTENT_KEY_INDX value and store it in the var level
+        // TODO (14): Use getCharExtra on the intent to get the INTENT_KEY_INDX value and store it in the var level
 
-        // TODO (22): Use the RecyclerView rv_grid
-        // TODO (23): Use a GridLayoutManager and put the spanCount 2
+        // TODO (15): Use the RecyclerView rv_grid
+        // TODO (16): Use a GridLayoutManager and put the spanCount 2
 
-
+        recyclerView.setLayoutManager(gridLayoutManager);
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(new CommonAdapter(10, CommonAdapter.GRID, level, null));
 

@@ -20,44 +20,87 @@ public class CommonAdapter extends RecyclerView.Adapter<CommonAdapter.NumberView
     private byte mType;
     private char mLevel;
 
-    // TODO (1): Define an interface called ListItemClickListner
-    // TODO (2): In the interface, define a void method called onListItemClick that takes an integer (index)
-    // TODO (3): Define a variable (listItemClickListener) of the defined interface
-    // TODO (4): Define a constructor to initiliaze number of items, type, level and listItemClickListener
+    private ListItemClickListener mListItemClickListener;
+
+    public interface ListItemClickListener {
+        // TODO (1): Define void method called onListItemClick that takes an integer (clickedItemIndex)
+
+    }
+
+    // TODO (2): Define a constructor to initiliaze number of items, type, level and listItemClickListener
 
 
-    // TODO (10): Define the three methods for the adapter
+    @NonNull
+    @Override
+    public NumberViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-    // TODO (11): In onCreateViewHolder, check type's value:
-    // TODO (11a): If it's VERTICAL, the id for layout to inflate is vertical_list_item
-    // TODO (11b): If it's HORIZONTAL, the id for layout to inflate is horizontal_list_item
-    // TODO (11c): If it's GRID, the id for layout to inflate is grid_list_item
+        Context context = parent.getContext();
+        LayoutInflater inflater = LayoutInflater.from(context);
 
-    // TODO (12): In onBindViewHolder, call the view holder's bind method you defined
-    // TODO (13): In getItemCount, just return the number of items
+        // TODO (6): In onCreateViewHolder, check type's value:
+        // TODO (6a): If it's VERTICAL, the id for layout to inflate is vertical_list_item
+        // TODO (6b): If it's HORIZONTAL, the id for layout to inflate is horizontal_list_item
+        // TODO (6c): If it's GRID, the id for layout to inflate is grid_list_item
 
-    // TODO (8): Make the NumberViewHolder implement View.OnClickListener. In onClick method, call listItemClickListener's method, and pass in adapter's position
+        int layoutId = R.layout.vertical_list_item;
+        switch (mType) {
+
+            case VERTICAL:
+                layoutId = R.layout.vertical_list_item;
+                break;
+
+        }
+
+
+        View view = inflater.inflate(layoutId, parent, false);
+
+        return new NumberViewHolder(view, mType);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull NumberViewHolder holder, int position) {
+        // TODO (7): In onBindViewHolder, call the view holder's bind method you defined
+
+    }
+
+    @Override
+    public int getItemCount() {
+        // TODO (8): In getItemCount, just return the number of items
+
+    }
+
+    // TODO (4): Make the NumberViewHolder implement View.OnClickListener. In onClick, call listItemClickListener's method
     class NumberViewHolder extends RecyclerView.ViewHolder {
 
-        // TODO (5): Define a text view variable for the view holder
+        private TextView mTextViewVertical;
 
         NumberViewHolder(View itemView, byte type) {
             super(itemView);
 
-            // TODO (6): For the constructor, put in the parameters an integer called type
+            // TODO (3): In the constructor, initialize the text view for the view holder. Check type's value:
+            // TODO (3a): If it's VERTICAL, the id for text view is tv_vertical
+            // TODO (3b): If it's HORIZONTAL, the id for text view is tv_horizontal
+            // TODO (3c): If it's GRID, the id for text view is tv_grid
 
-            // TODO (7): In the constructor, initialize the text view for the view holder. Check type's value:
-            // TODO (7a): If it's VERTICAL, the id for text view is tv_vertical
-            // TODO (7b): If it's HORIZONTAL, the id for text view is tv_horizontal
-            // TODO (7c): If it's GRID, the id for text view is tv_grid
             int textViewId = R.id.tv_vertical;
             switch (type) {
 
+                case VERTICAL:
+                    textViewId = R.id.tv_vertical;
+                    break;
+
             }
+
+            mTextViewVertical = itemView.findViewById(textViewId);
+
+            itemView.setOnClickListener(this);
 
         }
 
-        // TODO (9): Define the bind method to set the text for the text view. Pass in int index and char level, and set the text to (level + "" + index)
+        private void bind(int index, char level) {
+            // TODO (5): Define the bind method to set the text for the text view (level + "" + index)
+
+        }
 
     }
 

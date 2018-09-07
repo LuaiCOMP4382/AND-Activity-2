@@ -16,7 +16,8 @@ public class SecondActivity extends AppCompatActivity implements CommonAdapter.L
         setContentView(R.layout.activity_second);
 
 
-        // TODO (19): Use getCharExtra on the intent to get the INTENT_KEY_INDX value and store it in the var level
+        // TODO (13): Use getCharExtra on the intent to get the INTENT_KEY_INDEX value and store it in the var level
+
 
         RecyclerView recyclerView = findViewById(R.id.rv_horizontal);
 
@@ -28,8 +29,6 @@ public class SecondActivity extends AppCompatActivity implements CommonAdapter.L
         recyclerView.setAdapter(new CommonAdapter(10, CommonAdapter.HORIZONTAL, level, this));
 
     }
-
-    // TODO (20): Make this activity implement the interface defined in the adapter, just like MainActivity. But this time, make it go to ThirdActivity
 
     @Override
     public void onListItemClick(int clickedItemIndex) {
